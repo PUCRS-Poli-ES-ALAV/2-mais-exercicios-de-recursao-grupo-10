@@ -12,6 +12,9 @@ public class exercicios {
         System.out.println("Teste para o exercicio 3");
         System.out.println("o Fibonacci de 5 é " + fibo(5));
 
+        System.out.println("Teste para o exercicio 4");
+        System.out.println("o somatorio entre 3 e 5 é " + somatorioComRange(3, 5));
+
     }
 
     /**
@@ -118,6 +121,53 @@ public class exercicios {
             return 1;
         }
         return fibo(n - 1) + fibo(n - 2);
+    }
+
+    /**
+     * Modele e implemente um método recursivo que calcule o somatório dos números
+     * inteiros entre os números k e j, passados como parâmetro.
+     * 
+     * modelo
+     * 
+     * 1 Assinatura ->
+     * int somatorioComRange(int k, int j)
+     * 
+     * 2 oque ele faz ->
+     * calcula o somatorio entre dois numeros passados por parametro. Exemplo:
+     * k=4 e j=8 -> 4+5+6+7+8 -> 30
+     * 
+     * 3 casos de erro ->
+     * ele fala dois numeros inteiros, então isso cobre os numeros negativos
+     * 
+     * 4 caso base ->
+     * k ==j -> k
+     * 
+     * 
+     * 5 caso recursivo ->
+     * quando k < j
+     * soma(3,5)
+     * 3 + somatorio (4,5)
+     * 
+     * 
+     * k + somatorio (k+1, j)
+     * 
+     * 
+     * quando k > j
+     * inverte os parametros para ficar igual o caso do k < j
+     * 
+     */
+    public static int somatorioComRange(int k, int j) {
+
+        if (k > j) {
+            return somatorioComRange(j, k);
+        } else {
+            if (k == j) {
+                return k;
+            } else {
+                return k + somatorioComRange(k + 1, j);
+            }
+        }
+
     }
 
 }
