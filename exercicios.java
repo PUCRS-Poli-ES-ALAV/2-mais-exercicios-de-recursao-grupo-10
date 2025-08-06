@@ -7,7 +7,10 @@ public class exercicios {
         System.out.println("Fatorial de 6 é " + fatorial(6));
 
         System.out.println("Teste para o exercicio 2");
-        System.out.println("Somatorio de 5 é "+somatorio(5));
+        System.out.println("Somatorio de 5 é " + somatorio(5));
+
+        System.out.println("Teste para o exercicio 3");
+        System.out.println("o Fibonacci de 5 é " + fibo(5));
 
     }
 
@@ -77,6 +80,44 @@ public class exercicios {
         return n + somatorio(n - 1);
     }
 
-    
+    /**
+     * 1. Modele e implemente um método recursivo que calcule o n-ésimo número da
+     * sequência de fibonacci.
+     * 
+     * foi levado em consideração o indice 0...
+     * Modelo
+     * 1 Assinatura:
+     * int fibo(n)
+     * 
+     * 2 oque ele faz
+     * o metodo retorna o calculo do fibonacci para o numero informado como
+     * parametro. Exemplo:
+     * fibo(3) -> 0 1 1 2 -> 2
+     * fibo(5) -> 0 1 1 2 3 5-> 5
+     * ....
+     * 
+     * 3 casos de erro
+     * numeros negativos
+     * aceita a partir de n ==2, pois o 0 e 1 são casos bases
+     * 
+     * 4 casos base
+     * n == 0 -> 0
+     * n == 1 -> 1
+     * 
+     * 5 caso recursivo
+     * 
+     * 
+     * fibo(n-1)+fibo(n-2)
+     * 
+     */
+    public static int fibo(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        return fibo(n - 1) + fibo(n - 2);
+    }
 
 }
