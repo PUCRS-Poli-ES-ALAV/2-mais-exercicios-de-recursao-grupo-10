@@ -15,6 +15,9 @@ public class exercicios {
         System.out.println("Teste para o exercicio 4");
         System.out.println("o somatorio entre 3 e 5 é " + somatorioComRange(3, 5));
 
+          System.out.println("Teste para o exercicio 5");
+        System.out.println("a palavra arara é palindromo ?  " + isPal("arara"));
+
     }
 
     /**
@@ -170,4 +173,51 @@ public class exercicios {
 
     }
 
+    /**
+     * Modele e implemente um método recursivo que recebe um String em retorna true
+     * se este String for um palíndrome, false caso contrário.
+     * boolean isPal(String s)
+     * 
+     * modelo
+     * 
+     * 1 Assinatura ->
+     * boolean isPal(String s)
+     * 
+     * 2 oque ele faz ->
+     * ele recebe uma String e diz que é palindromo. Exemplo:
+     * arara -> true
+     * casa -> false
+     * 
+     * 3 caso de erro
+     * n/a
+     * 
+     * 4 caso base
+     * string.length == 0 -> true
+     * string.length == 1 -> true
+     * 
+     * 5 caso recursivo
+     * arara
+     * a a -> ve se o primeiro e ultimo sao iguais e vai descendo até chegar na
+     * metada ou
+     * r r
+     * a
+     */
+    public static boolean isPal(String palavra) {
+        return isPal(palavra, 0, palavra.length()-1);
+    }
+
+    public static boolean isPal(String palavra,int inicio,int finalpalavra) {
+    
+        if (inicio >= finalpalavra) {
+            return true;
+        }
+        // Se os caracteres nas extremidades são diferentes, não é palíndromo
+        if (palavra.charAt(inicio) != palavra.charAt(finalpalavra)) {
+            return false;
+        }
+        // Chamada recursiva: verifica os próximos caracteres
+        return isPal(palavra, inicio + 1, finalpalavra - 1);
+
+    
+    }
 }
