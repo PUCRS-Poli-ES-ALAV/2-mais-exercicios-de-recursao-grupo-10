@@ -15,8 +15,11 @@ public class exercicios {
         System.out.println("Teste para o exercicio 4");
         System.out.println("o somatorio entre 3 e 5 é " + somatorioComRange(3, 5));
 
-          System.out.println("Teste para o exercicio 5");
+        System.out.println("Teste para o exercicio 5");
         System.out.println("a palavra arara é palindromo ?  " + isPal("arara"));
+
+        System.out.println("Teste para o exercicio 6");
+        System.out.println("o binario de 5 é  " + convBase2(5));
 
     }
 
@@ -203,11 +206,11 @@ public class exercicios {
      * a
      */
     public static boolean isPal(String palavra) {
-        return isPal(palavra, 0, palavra.length()-1);
+        return isPal(palavra, 0, palavra.length() - 1);
     }
 
-    public static boolean isPal(String palavra,int inicio,int finalpalavra) {
-    
+    public static boolean isPal(String palavra, int inicio, int finalpalavra) {
+
         if (inicio >= finalpalavra) {
             return true;
         }
@@ -218,6 +221,45 @@ public class exercicios {
         // Chamada recursiva: verifica os próximos caracteres
         return isPal(palavra, inicio + 1, finalpalavra - 1);
 
-    
     }
+
+    /**
+     * Modele e implemente um método recursivo que recebe um inteiro zero ou
+     * positivo e retorna um String com o número em binário.
+     * String convBase2(int n)
+     * Modelo
+     * 1 assnatura:
+     * String convBase2(int n)
+     * 
+     * 2 oque ele faz:
+     * o metodo recebe um numero interio positivo e retorna a string com o valor em
+     * binario, por exemplo:
+     * n=2 -> "0010"
+     * n=3 -> "0011"
+     * 
+     * 3 casos de erro:
+     * caso informe um numero negativo
+     * 
+     * 4 casos base:
+     * n = 0 -> "0"
+     * n= 1 -> "01"
+     * 
+     * 5 caso recursivo:
+     * 5 /2 + 5%2
+     * 3 + 1
+     * 1 + 0 "1"
+     * "1"+"0"+"1"
+     */
+    private String convBase2(int n) {
+        if (n == 0) {
+            return "0";
+        }
+        if (n == 1) {
+            return "1";
+        }
+        int numero = n / 2;
+        int numero2 = n % 2;
+        return convBase2(numero) + convBase2(numero2);
+    }
+
 }
