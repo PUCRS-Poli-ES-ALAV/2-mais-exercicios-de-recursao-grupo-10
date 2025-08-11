@@ -37,6 +37,11 @@ public class exercicios {
         arrayList2.add(6);
         System.out.println("o maior numero no array é " + findBiggest(arrayList2));
 
+        System.out.println("Teste para o exercicio 9");
+        System.out.println("A substring 'ara' está contida em 'arara'? " + findSubStr("arara", "ara"));
+
+
+
     }
 
     /**
@@ -348,4 +353,62 @@ public class exercicios {
 
     }
 
+    /**
+     * Implemente um método recursivo para determinar se um string ocorre dentro de
+     * outro.
+     * boolean findSubStr(String str, String match)
+     * 
+     * modelo
+     * 1 Assinatura:
+     * boolean findSubStr(String str, String match)
+     * 
+     * 2 oque faz
+     * verifica se a string match ocorre dentro da string str. Exemplo:
+     * "hello" "ll" -> true
+     * "hello" "world" -> false
+     * 
+     * 3 caso de erro:
+     * caso a string match seja nula ou vazia
+     * 
+     * 4 casos base:
+     * str.length() < match.length() -> false
+     * str.equals(match) -> true
+     * 
+     * 5 caso recursivo:
+     * arbara ara
+     * a     a true
+     * r      r true
+     * a      a true
+     * 
+     * str.charAt(0) == match.charAt(0) -> findSubStr(str.substring(1),
+     * match.substring(1))
+     * str.charAt(0) != match.charAt(0) -> findSubStr(str.substring(1), match)
+     * 
+     * Ta errado pq no caso de arbara ara ele acusa erro, mesmo nao estando errado
+     */
+    public static boolean findSubStr(String str, String match) {
+        str.contains(str);
+        if(match.isEmpty()) {
+            return true;
+        }
+        if (str.isEmpty()) {
+            return false;
+        }
+
+        if (str.length() < match.length()) {
+            return false;
+        }
+
+        if (str.equals(match)) {
+            return true;
+        }
+
+        // Verifica se o primeiro caractere de str é igual ao primeiro caractere de match
+        if (str.charAt(0) == match.charAt(0)) {
+            return findSubStr(str.substring(1), match.substring(1));
+        } else {
+            // Se o primeiro caractere não coincidir, continue a busca
+            return findSubStr(str.substring(1), match);
+        }
+    }
 }
