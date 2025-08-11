@@ -40,7 +40,9 @@ public class exercicios {
         System.out.println("Teste para o exercicio 9");
         System.out.println("A substring 'ara' está contida em 'arara'? " + findSubStr("arara", "ara"));
 
-
+        System.out.println("Teste para o exercicio 10");
+        System.out.println("O número de dígitos de -1243 é " + nroDigit(-1243));
+        System.out.println("O número de dígitos de 1243 é " + nroDigit(1243));
 
     }
 
@@ -376,9 +378,9 @@ public class exercicios {
      * 
      * 5 caso recursivo:
      * arbara ara
-     * a     a true
-     * r      r true
-     * a      a true
+     * a a true
+     * r r true
+     * a a true
      * 
      * str.charAt(0) == match.charAt(0) -> findSubStr(str.substring(1),
      * match.substring(1))
@@ -388,7 +390,7 @@ public class exercicios {
      */
     public static boolean findSubStr(String str, String match) {
         str.contains(str);
-        if(match.isEmpty()) {
+        if (match.isEmpty()) {
             return true;
         }
         if (str.isEmpty()) {
@@ -403,7 +405,8 @@ public class exercicios {
             return true;
         }
 
-        // Verifica se o primeiro caractere de str é igual ao primeiro caractere de match
+        // Verifica se o primeiro caractere de str é igual ao primeiro caractere de
+        // match
         if (str.charAt(0) == match.charAt(0)) {
             return findSubStr(str.substring(1), match.substring(1));
         } else {
@@ -411,4 +414,37 @@ public class exercicios {
             return findSubStr(str.substring(1), match);
         }
     }
+
+    /**
+     * Faça um método recursivo que determina o número de dígitos de um inteiro.
+     * int nroDigit(int n)
+     * 
+     * modelo
+     * 1 assinatura
+     * int nroDigit(int n)
+     * 
+     * 2 oque faz
+     * determina o número de dígitos de um inteiro. Exemplo:
+     * 123 -> 3
+     * 6 -> 1
+     * 
+     * 3 casos de erro
+     * n/a
+     * 
+     * 4 casos base
+     * n < 10 -> 1
+     * 
+     * 5 caso recursivo
+     * n = 123
+     * 1 + nroDigit(12)
+     * 1 + 2 + nroDigit(1)
+     * 1 + 2 + 1 = 3
+     */
+    public static int nroDigit(int n) {
+        if (n / 10 == 0) {
+            return 1;
+        }
+        return 1 + nroDigit(n / 10);
+    }
+
 }
