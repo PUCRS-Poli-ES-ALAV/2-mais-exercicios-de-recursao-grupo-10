@@ -44,6 +44,10 @@ public class exercicios {
         System.out.println("O número de dígitos de -1243 é " + nroDigit(-1243));
         System.out.println("O número de dígitos de 1243 é " + nroDigit(1243));
 
+        System.out.println("Teste para o exercicio 11");
+        System.out.println("O resultado da permutação de ceu é " + permutations("ceu"));
+
+
     }
 
     /**
@@ -447,4 +451,41 @@ public class exercicios {
         return 1 + nroDigit(n / 10);
     }
 
+   /**
+    *
+    *Implemente um métodos que recebe um String e retorna um ArrayList com todas as permutações deste String.
+    * ArrayList<String> permutations(String s)
+    * Modelo
+    * 1 assinatura:
+    * ArrayList<String> permutations(String s)
+    * 2 oque ele faz
+    * recebe uma String como parametro e após ele retorna um array contendo todas as permutações dessa String.
+    * Uma permutação é todas as cobinações possiveis daquela string, exemplo:
+    * rio [rio][roi][ior][iro]... e assim vai...
+    * 3 caso de erro:
+    * ele da um erro quando passa por parametro uma string vazia
+    * 4 caso base:
+    * string.length == 1 -> array.add[string]
+    * 5 caso recursivo:
+    * para cada letra da string
+    * remove a letra da string
+    * chama a função recursiva
+    * adiciona a letra removida em cada permutação gerada
+    */ 
+    private static ArrayList<String> permutations(String s){
+        ArrayList<String> resultado = new ArrayList<>();
+        if(s.length() == 1){
+            resultado.add(s);
+            return resultado;
+        }
+        for(int i = 0; i < s.length(); i++){
+            char letraAtual = s.charAt(i);
+            String restante = s.substring(0, i) + s.substring(i + 1);
+            ArrayList<String> permutacoesRestantes = permutations(restante);
+            for(String permutacao : permutacoesRestantes){
+                resultado.add(letraAtual + permutacao);
+            }
+        }
+        return resultado;
+    }
 }
