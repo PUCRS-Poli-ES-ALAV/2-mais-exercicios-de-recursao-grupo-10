@@ -1,3 +1,5 @@
+import java.lang.classfile.instruction.ReturnInstruction;
+import java.util.ArrayList;
 
 public class exercicios {
 
@@ -20,6 +22,13 @@ public class exercicios {
 
         System.out.println("Teste para o exercicio 6");
         System.out.println("o binario de 5 é  " + convBase2(5));
+
+        System.out.println("Teste para o exercicio 7");
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(2);
+        arrayList.add(3);
+        arrayList.add(5);
+        System.out.println("o somatorio contido no array é " + somatorioArrayList(arrayList));
 
     }
 
@@ -261,5 +270,35 @@ public class exercicios {
         int numero2 = n % 2;
         return convBase2(numero) + convBase2(numero2);
     }
+
+    /**
+     * Modele e implemente um método recursivo que calcule o somatório dos números contidos em um ArrayList de inteiros, passado como parâmetro.
+     * 1 Assinatura:
+     * int somatorioArrayList(ArrayList array)
+     * 
+     * 2 oque faz:
+     * retorna um somatorio dos valores contidos de um array list. exemplo:
+     * [2,3,4,5]-> 2+3+4+5= 14
+     * 
+     * 3 casos de erro:
+     * erro se o array estiver vazio
+     * 
+     * 4 casos base:
+     * array.size==1 -> return array.get(0)
+     * 
+     * 5 caso recursivo:
+     * [2,3,5]
+     * 5+[2,3]
+     * 5+2+[3]
+     * 5+2+3=9
+     */
+
+    private int somatorioArrayList(ArrayList<Integer> array){
+        if (array.size()==1){
+            return array.get(0);
+        }
+        return array.remove(array.size()-1) + somatorioArrayList(array);
+    }
+
 
 }
