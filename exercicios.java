@@ -1,4 +1,3 @@
-import java.lang.classfile.instruction.ReturnInstruction;
 import java.util.ArrayList;
 
 public class exercicios {
@@ -25,10 +24,18 @@ public class exercicios {
 
         System.out.println("Teste para o exercicio 7");
         ArrayList<Integer> arrayList = new ArrayList<>();
-        arrayList.add(2);
+        arrayList.add(6);
         arrayList.add(3);
         arrayList.add(5);
         System.out.println("o somatorio contido no array é " + somatorioArrayList(arrayList));
+
+        System.out.println("Teste para o exercicio 8");
+        ArrayList<Integer> arrayList2 = new ArrayList<>();
+        arrayList2.add(6);
+        arrayList2.add(3);
+        arrayList2.add(5);
+        arrayList2.add(6);
+        System.out.println("o maior numero no array é " + findBiggest(arrayList2));
 
     }
 
@@ -272,7 +279,8 @@ public class exercicios {
     }
 
     /**
-     * Modele e implemente um método recursivo que calcule o somatório dos números contidos em um ArrayList de inteiros, passado como parâmetro.
+     * Modele e implemente um método recursivo que calcule o somatório dos números
+     * contidos em um ArrayList de inteiros, passado como parâmetro.
      * 1 Assinatura:
      * int somatorioArrayList(ArrayList array)
      * 
@@ -292,13 +300,52 @@ public class exercicios {
      * 5+2+[3]
      * 5+2+3=9
      */
-
-    private int somatorioArrayList(ArrayList<Integer> array){
-        if (array.size()==1){
+    private int somatorioArrayList(ArrayList<Integer> array) {
+        if (array.size() == 1) {
             return array.get(0);
         }
-        return array.remove(array.size()-1) + somatorioArrayList(array);
+        return array.remove(array.size() - 1) + somatorioArrayList(array);
     }
 
+    /**
+     * Modele e implemente um método recursivo para encontrar o maior elemento de um
+     * ArrayList.
+     * int findBiggest(ArrayList<Integer> ar)
+     * modelo
+     * 1 assinatura:
+     * int findBiggest(ArrayList<Integer> ar)
+     * 
+     * 2 oque faz:
+     * percorre um array a busca de encontrar o maior elemento. Exemplo:
+     * [2,3,5]-> 5
+     * [6,3,5] -> 6
+     * 
+     * 3 casos de erro
+     * caso o array esteja vazio
+     * 
+     * 4 casos base
+     * array.size==1 -> array.get(0)
+     * 
+     * 5 caso recursivo
+     * [2,3]
+     * 2 > [3]
+     * ? 2 > 3 = 2:3;
+     * 
+     */
+    public static int findBiggest(ArrayList<Integer> ar) {
+
+        if (ar.size() == 1) {
+            return ar.get(0);
+        }
+
+        int numeroAuxiliar = ar.remove(ar.size() - 1);
+
+        if (numeroAuxiliar > findBiggest(ar)) {
+            return numeroAuxiliar;
+        } else {
+            return ar.get(0);
+        }
+
+    }
 
 }
